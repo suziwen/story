@@ -1,6 +1,5 @@
 package com.suziwen.persistent.model;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,15 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * UserAuthOrganization entity. @author MyEclipse Persistence Tools
+ * UserAuth entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "bind_userauthorganization")
-public class UserAuthOrganization implements java.io.Serializable {
+@Table(name = "bind_userauth")
+public class UserAuth implements java.io.Serializable {
 
 	// Fields
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.AUTO)
 	private String id;
 	@Column(nullable = false)
 	private String userId;
@@ -34,16 +33,16 @@ public class UserAuthOrganization implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public UserAuthOrganization() {
+	public UserAuth() {
 	}
 
 	/** minimal constructor */
-	public UserAuthOrganization(String id) {
+	public UserAuth(String id) {
 		this.id = id;
 	}
 
 	/** full constructor */
-	public UserAuthOrganization(String id, String userId, String siteId,
+	public UserAuth(String id, String userId, String siteId,
 			String bindLoginName, String binPwd, Date bindDate, String bindUid,
 			String bindAccessToken, String bindAccessSecret) {
 		this.id = id;

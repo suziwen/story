@@ -4,6 +4,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.appfuse.Constants;
 import org.appfuse.model.User;
 import org.appfuse.service.MailEngine;
@@ -28,8 +30,13 @@ import java.util.Map;
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
-public class BaseAction extends ActionSupport {
+public class BaseAction extends ActionSupport  implements ServletRequestAware, ServletResponseAware{
     private static final long serialVersionUID = 3525445612504421307L;
+    
+	/** 获取request对象 */
+	public HttpServletRequest request;
+	/** 获取response对象 */
+	public HttpServletResponse response;
 
     /**
      * Constant for cancel result String
@@ -125,23 +132,23 @@ public class BaseAction extends ActionSupport {
         return config;
     }
 
-    /**
-     * Convenience method to get the request
-     *
-     * @return current request
-     */
-    protected HttpServletRequest getRequest() {
-        return ServletActionContext.getRequest();
-    }
-
-    /**
-     * Convenience method to get the response
-     *
-     * @return current response
-     */
-    protected HttpServletResponse getResponse() {
-        return ServletActionContext.getResponse();
-    }
+//    /**
+//     * Convenience method to get the request
+//     *
+//     * @return current request
+//     */
+//    protected HttpServletRequest getRequest() {
+//        return ServletActionContext.getRequest();
+//    }
+//
+//    /**
+//     * Convenience method to get the response
+//     *
+//     * @return current response
+//     */
+//    protected HttpServletResponse getResponse() {
+//        return ServletActionContext.getResponse();
+//    }
 
     /**
      * Convenience method to get the session. This will create a session if one doesn't exist.
@@ -211,4 +218,20 @@ public class BaseAction extends ActionSupport {
     public void setSave(String save) {
         this.save = save;
     }
+
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
 }

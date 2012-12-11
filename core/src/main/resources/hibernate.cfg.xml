@@ -8,5 +8,7 @@
     <session-factory>
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
+        <mapping class="com.suziwen.persistent.model.UserAuthOrganization"/>
+        <mapping class="com.suziwen.persistent.model.UserAuth"/>
     </session-factory>
 </hibernate-configuration>

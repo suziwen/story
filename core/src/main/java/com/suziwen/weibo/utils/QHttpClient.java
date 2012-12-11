@@ -117,7 +117,7 @@ public class QHttpClient {
 			EntityUtils.consume(entity);
 			httpClient = null;
 		} catch (Exception e) {
-			log.error("", e);MultipartEntity
+			log.error("", e);
 			throw new ConnectionException(e);
 		}
 
