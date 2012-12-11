@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package com.suziwen.weibo.base;
+
+/**
+ * ******************************************************
+ * <p>
+ * Description: 第三方微博操作管理类
+ * </p>
+ * <p>
+ * Create Time: 2012-3-30 下午02:26:21
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ******************************************************* 
+ */
+public interface IWeiBoRequestManager {
+
+	public WeiBoRequest getWeiBoRequest(String type);
+
+}

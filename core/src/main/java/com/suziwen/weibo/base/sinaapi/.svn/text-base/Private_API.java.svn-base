@@ -1,0 +1,60 @@
+package com.cblink.weibo.base.sinaapi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cblink.weibo.base.api.IPrivate_API;
+import com.cblink.weibo.bean.OAuth;
+import com.cblink.weibo.bean.QParameter;
+import com.cblink.weibo.bean.WeiBoMessageBean;
+import com.cblink.weibo.exception.WeiBoException;
+
+/**
+ * ******************************************************
+ * <p>
+ * Description: 私信相关API
+ * </p>
+ * <p>
+ * Create Time: 2012-3-28 下午04:24:37
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ******************************************************* 
+ */
+public class Private_API extends SinaCheckExceptionRequestAPI implements IPrivate_API {
+	private String format = "xml";
+	/**
+	 * 发一条私信
+	 * 
+	 * @param oauth
+	 * @param format
+	 * @param content
+	 * @param clientip
+	 * @param jing
+	 * @param wei
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoMessageBean add(OAuth oauth, String content,  String name)throws WeiBoException {
+		throw new WeiBoException("新浪不支持私信操作");
+
+	}
+
+	/**
+	 * 删除一条私信
+	 * 
+	 * @param oauth
+	 * @param format
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoMessageBean del(OAuth oauth, String id)throws WeiBoException {
+		throw new WeiBoException("新浪不支持私信操作");
+	}
+}

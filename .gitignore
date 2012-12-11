@@ -5,4 +5,7 @@ web/.classpath
 web/.project
 web/.settings/
 web/target/
+.project
+.settings/
+core/target/
 

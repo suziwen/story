@@ -1,0 +1,89 @@
+package com.suziwen.weibo.bean;
+
+/**
+ * ******************************************************
+ * <p>
+ * Description:微博异常操作类
+ * </p>
+ * <p>
+ * Create Time: 2012-3-30 下午04:30:51
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ******************************************************* 
+ */
+public class WeiBoExceptionBean {
+	/**
+	 * 认证失效或过期错误
+	 */
+	public static final String UNAUTH = "1";
+	/**
+	 * 连接限制的错误
+	 */
+	public static final String CONNLIMMIT = "2";
+	/**
+	 * 系统服务内部错误，即API没提示的错误
+	 */
+	public static final String SERVERERROR = "3";
+	/**
+	 * 请求错误(参数不对,字数超长)
+	 */
+	public static final String REQUESTERROR ="4";
+
+	/**
+	 * 状态值,1表示未认证，需要重新认证，2表示连接限制,3表示服务器内部错误
+	 */
+	private String value;
+	/**
+	 * 第三方平台返回的errorCode
+	 */
+	private String errorCode;
+	/**
+	 * 系统返回的错误信息
+	 */
+	private String orignMsg;
+	/**
+	 * 系统返回的原始字符串
+	 */
+	private String orignReturn;
+	
+	/**
+	 * 绑定类型
+	 */
+	private String bindType;
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public String getOrignMsg() {
+		return orignMsg;
+	}
+	public void setOrignMsg(String orignMsg) {
+		this.orignMsg = orignMsg;
+	}
+	public String getOrignReturn() {
+		return orignReturn;
+	}
+	public void setOrignReturn(String orignReturn) {
+		this.orignReturn = orignReturn;
+	}
+	public String getErrorCode() {
+		return errorCode;
+	}
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+	public String getBindType() {
+		return bindType;
+	}
+	public void setBindType(String bindType) {
+		this.bindType = bindType;
+	}
+
+}

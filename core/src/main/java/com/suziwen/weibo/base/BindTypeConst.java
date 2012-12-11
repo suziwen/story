@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package com.suziwen.weibo.base;
+
+/********************************************************
+ * <p>
+ * Description:绑定类型
+ * </p>
+ * <p>
+ * Create Time: 2012-3-31 下午02:30:48
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ********************************************************/
+public class BindTypeConst {
+
+	public static final String QQ = "qq";
+
+	public static final String SINA = "sina";
+
+	public static final String SOHU = "sohu";
+	
+	public static final String PCB_ORDER ="pcb_order";
+	
+	
+	public static final String PCB_ORIENTED = "pcb_oriented";
+
+}

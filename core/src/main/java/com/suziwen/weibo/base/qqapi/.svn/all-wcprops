@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/cblink/!svn/ver/7384/trunk/src/com/cblink/weibo/base/qqapi
+END
+QQCheckExceptionRequestAPI.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/base/qqapi/QQCheckExceptionRequestAPI.java
+END
+Private_API.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/cblink/!svn/ver/7316/trunk/src/com/cblink/weibo/base/qqapi/Private_API.java
+END
+Statuses_API.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/cblink/!svn/ver/7384/trunk/src/com/cblink/weibo/base/qqapi/Statuses_API.java
+END
+User_API.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cblink/!svn/ver/7316/trunk/src/com/cblink/weibo/base/qqapi/User_API.java
+END
+T_API.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/cblink/!svn/ver/7384/trunk/src/com/cblink/weibo/base/qqapi/T_API.java
+END
+Search_API.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/cblink/!svn/ver/7384/trunk/src/com/cblink/weibo/base/qqapi/Search_API.java
+END

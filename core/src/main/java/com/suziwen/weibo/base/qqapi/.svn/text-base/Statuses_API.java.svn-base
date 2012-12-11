@@ -1,0 +1,173 @@
+package com.cblink.weibo.base.qqapi;
+
+import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
+
+import com.cblink.weibo.base.BindTypeConst;
+import com.cblink.weibo.base.api.IStatuses_API;
+import com.cblink.weibo.bean.OAuth;
+import com.cblink.weibo.bean.QParameter;
+import com.cblink.weibo.bean.WeiBoAccount;
+import com.cblink.weibo.bean.WeiBoBean;
+import com.cblink.weibo.bean.WeiBoListBean;
+import com.cblink.weibo.exception.WeiBoException;
+
+/**
+ * ******************************************************
+ * <p>
+ * Description:时间线相关API
+ * </p>
+ * <p>
+ * Create Time: 2012-3-28 下午04:25:17
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ******************************************************* 
+ */
+public class Statuses_API extends QQCheckExceptionRequestAPI implements IStatuses_API {
+
+	private String format = "xml";
+
+	/**
+	 * 主页时间线
+	 * 
+	 * @param oauth
+	 * @param pageflag
+	 * @param reqnum
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoListBean home_timeline(OAuth oauth, String pageflag, String reqnum, String lastid)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		parameters.add(new QParameter("format", format));
+		parameters.add(new QParameter("pageflag", pageflag));
+		parameters.add(new QParameter("lastid", lastid));		
+		parameters.add(new QParameter("reqnum", reqnum));
+		String result = getResource("http://open.t.qq.com/api/statuses/home_timeline", parameters, oauth);
+		return wrapQQWeiBoBean(result);
+	}
+
+	/**
+	 * 广播大厅时间线
+	 * 
+	 * @param oauth
+	 * @param pos
+	 * @param reqnum
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoListBean public_timeline(OAuth oauth, String pos, String reqnum, String lastid)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		parameters.add(new QParameter("format", format));
+		parameters.add(new QParameter("pos", pos));
+		parameters.add(new QParameter("reqnum", reqnum));
+		String result = getResource("http://open.t.qq.com/api/statuses/public_timeline", parameters, oauth);
+		return wrapQQWeiBoBean(result);
+	}
+
+	/**
+	 * 其他用户发表时间线
+	 * 
+	 * @param oauth
+	 * @param pageflag
+	 * @param reqnum
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoListBean user_timeline(OAuth oauth, String pageflag, String reqnum, String lastid, String name)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		parameters.add(new QParameter("format", format));
+		parameters.add(new QParameter("pageflag", pageflag));
+		parameters.add(new QParameter("lastid", lastid));
+		parameters.add(new QParameter("reqnum", reqnum));
+		parameters.add(new QParameter("name", name));
+		String result = getResource("http://open.t.qq.com/api/statuses/user_timeline", parameters, oauth);
+		return wrapQQWeiBoBean(result);
+	}
+
+	/**
+	 * 用户提及时间线
+	 * 
+	 * @param oauth
+	 * @param pageflag
+	 * @param reqnum
+	 * @param lastid
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoListBean mentions_timeline(OAuth oauth, String pageflag, String reqnum, String lastid)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		parameters.add(new QParameter("format", format));
+		parameters.add(new QParameter("pageflag", pageflag));
+		parameters.add(new QParameter("reqnum", reqnum));
+		parameters.add(new QParameter("lastid", lastid));
+		String result = getResource("http://open.t.qq.com/api/statuses/mentions_timeline", parameters, oauth);
+		return wrapQQWeiBoBean(result);
+	}
+
+	private WeiBoListBean wrapQQWeiBoBean(String orign)throws WeiBoException {
+		WeiBoListBean list = new WeiBoListBean();
+		SAXReader saxReader = new SAXReader();
+		try {
+			Document xml = saxReader.read(new ByteArrayInputStream(orign.getBytes("UTF-8")));
+			List<WeiBoBean> weiBoBeans = new ArrayList<WeiBoBean>();
+			List<Node> nodes = xml.selectNodes("root/data/info");
+			for (Node node : nodes) {
+				WeiBoBean weiBoBean = new WeiBoBean();
+				String id = node.selectSingleNode("id").getText();
+				String text = node.selectSingleNode("text").getText();
+				String source = node.selectSingleNode("from").getText();
+				String created_at = node.selectSingleNode("timestamp").getText();
+				WeiBoAccount account = wrapQQWeiBoAccount(node);
+
+				weiBoBean.setId(id);
+				weiBoBean.setCreateTime(new Date());
+				weiBoBean.setSource(source);
+				weiBoBean.setText(text);
+				weiBoBean.setBindType(BindTypeConst.QQ);
+				weiBoBean.setUser(account);
+				weiBoBeans.add(weiBoBean);
+			}
+			list.setWeiBoBeans(weiBoBeans);
+		} catch (UnsupportedEncodingException e) {
+			throw new WeiBoException("不支持的格式转换", e);
+		} catch (DocumentException e) {
+			throw new WeiBoException(e);
+		}
+		return list;
+	}
+
+	private WeiBoAccount wrapQQWeiBoAccount(Node node)throws WeiBoException {
+		WeiBoAccount account = new WeiBoAccount();
+		String id = node.selectSingleNode("openid").getText();
+		String screen_name = node.selectSingleNode("nick").getText();
+		String name = node.selectSingleNode("name").getText();
+		String profile_image_url = node.selectSingleNode("head").getText();
+		String verified = node.selectSingleNode("isvip").getText();
+		// String gender = node.selectSingleNode("gender").getText();
+
+		account.setId(id);
+		account.setHead(profile_image_url+"/50");
+		account.setIsvip(verified == "0" ? "false" : "true");
+		account.setName(StringUtils.isBlank(name) ? id : name);
+		account.setNick(StringUtils.isBlank(screen_name) ? id : screen_name);
+		account.setBindType(BindTypeConst.QQ);
+		// account.setSex("0".equals(gender) ? "male" : "female");
+
+		return account;
+	}
+}

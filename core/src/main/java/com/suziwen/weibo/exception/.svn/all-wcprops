@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/exception
+END
+WeiBoException.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/exception/WeiBoException.java
+END
+WeiBoAuthException.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/exception/WeiBoAuthException.java
+END
+ConnectionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/exception/ConnectionException.java
+END
+WeiBoConnLimmitException.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/cblink/!svn/ver/7298/trunk/src/com/cblink/weibo/exception/WeiBoConnLimmitException.java
+END

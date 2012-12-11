@@ -1,0 +1,61 @@
+/**
+ * 
+ */
+package com.suziwen.weibo.exception;
+
+import com.suziwen.weibo.bean.WeiBoExceptionBean;
+
+/********************************************************
+ * <p>
+ * Description: 第三方微博认证过期或失效异常
+ * </p>
+ * <p>
+ * Create Time: 2012-3-30 下午04:45:06
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ********************************************************/
+public class WeiBoAuthException extends WeiBoException {
+
+	public WeiBoAuthException(WeiBoExceptionBean weiBoExceptionBean) {
+		super(weiBoExceptionBean);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	public WeiBoAuthException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param message
+	 */
+	public WeiBoAuthException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param cause
+	 */
+	public WeiBoAuthException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param message
+	 * @param cause
+	 */
+	public WeiBoAuthException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+}

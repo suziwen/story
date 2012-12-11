@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/cblink/!svn/ver/7439/trunk/src/com/cblink/weibo/utils
+END
+OAuthClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/OAuthClient.java
+END
+QHttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/cblink/!svn/ver/7439/trunk/src/com/cblink/weibo/utils/QHttpClient.java
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/Utils.java
+END
+Base64Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/Base64Encoder.java
+END
+Configuration.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/Configuration.java
+END
+QStr.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/QStr.java
+END
+WeiBoConst.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/WeiBoConst.java
+END
+QHttpUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/cblink/!svn/ver/7218/trunk/src/com/cblink/weibo/utils/QHttpUtil.java
+END

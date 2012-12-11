@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package com.cblink.weibo.bean;
+
+/********************************************************
+ * <p>
+ * Description: 根据不同的类型取得对应的oauth
+ * </p>
+ * <p>
+ * Create Time: 2012-3-27 下午05:22:43
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ********************************************************/
+public class OAuthFactory {
+
+	
+	public OAuth getOAuth(String bindType) {
+		if("qq".equals(bindType)){
+			return null;
+		}
+		return null;
+	}
+}

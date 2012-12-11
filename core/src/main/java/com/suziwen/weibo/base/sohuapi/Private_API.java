@@ -1,0 +1,89 @@
+package com.suziwen.weibo.base.sohuapi;
+
+import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
+
+import com.suziwen.weibo.base.BindTypeConst;
+import com.suziwen.weibo.base.api.IPrivate_API;
+import com.suziwen.weibo.bean.OAuth;
+import com.suziwen.weibo.bean.QParameter;
+import com.suziwen.weibo.bean.WeiBoMessageBean;
+import com.suziwen.weibo.exception.WeiBoException;
+
+/**
+ * ******************************************************
+ * <p>
+ * Description:私信相关API
+ * </p>
+ * <p>
+ * Create Time: 2012-3-28 下午04:23:30
+ * </p>
+ * <p>
+ * Company: Copyright Bank
+ * </p>
+ * 
+ * @author suziwen
+ * @version 1.0
+ ******************************************************* 
+ */
+public class Private_API extends SohuCheckExceptionRequestAPI implements IPrivate_API {
+	private String format = "xml";
+	/**
+	 * 发一条私信
+	 * 
+	 * @param oauth
+	 * @param format
+	 * @param content
+	 * @param clientip
+	 * @param jing
+	 * @param wei
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoMessageBean add(OAuth oauth,  String content,  String name)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		parameters.add(new QParameter("text", content));
+		parameters.add(new QParameter("user", name));
+		String result = postContent("http://api.t.sohu.com/direct_messages/new."+format, parameters, oauth);
+		return wrapSOHUWeiBoMessageBean(result);
+	}
+
+	/**
+	 * 删除一条私信
+	 * 
+	 * @param oauth
+	 * @param format
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public WeiBoMessageBean del(OAuth oauth,  String id)throws WeiBoException {
+		List<QParameter> parameters = new ArrayList<QParameter>();
+		String result = postContent("http://api.t.sohu.com/direct_messages/destroy/"+id +"."+format, parameters, oauth);
+		return wrapSOHUWeiBoMessageBean(result);
+	}
+	
+	private WeiBoMessageBean wrapSOHUWeiBoMessageBean(String oringStr) {
+		SAXReader saxReader = new SAXReader();
+		WeiBoMessageBean weiBoMessageBean = new WeiBoMessageBean();
+		try {
+			Document xml = saxReader.read(new ByteArrayInputStream(oringStr.getBytes("UTF-8")));
+
+			String id = xml.selectSingleNode("direct_message/id").getText();
+			weiBoMessageBean.setId(id);
+			weiBoMessageBean.setBindType(BindTypeConst.SOHU);
+		} catch (UnsupportedEncodingException e) {
+			throw new WeiBoException("不支持的格式转换", e);
+		} catch (DocumentException e) {
+			throw new WeiBoException(e);
+		}
+		return weiBoMessageBean;
+	}
+}
