@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/index.html
+END
+jquery.artDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/jquery.artDialog.js
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/license.txt
+END
+artDialog.js
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/artDialog.js
+END
+artDialog.plugins.js
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/artDialog.plugins.js
+END
+jquery.artDialog.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/jquery.artDialog.min.js
+END
+artDialog.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/artDialog.min.js
+END
+artDialog.plugins.min.js
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/yizhaopin/!svn/ver/1055/yizhaopin-web/trunk/web/src/main/webapp/scripts/artDialog/artDialog.plugins.min.js
+END
