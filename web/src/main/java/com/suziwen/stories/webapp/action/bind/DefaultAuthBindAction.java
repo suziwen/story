@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.suziwen.Exception.BaseException;
 import com.suziwen.stories.webapp.common.OperatorResult;
+import com.suziwen.weibo.base.IWeiBoRequestManager;
 import com.suziwen.weibo.base.OAuthStatusConst;
 import com.suziwen.weibo.base.WeiBoRequest;
 import com.suziwen.weibo.bean.OAuth;
@@ -18,8 +19,8 @@ import com.suziwen.weibo.utils.QStr;
 
 /********************************************************
  * <p>
- * 用户与微博认证操作
- * Description:callback格式说明 0表示获取requestTOken成功下一步需要用户通过href去获取authotoken
+ * 用户与微博认证操作 Description:callback格式说明
+ * 0表示获取requestTOken成功下一步需要用户通过href去获取authotoken
  * </p>
  * <p>
  * Create Time: 2012-3-15 下午05:09:39
@@ -48,12 +49,12 @@ public class DefaultAuthBindAction extends BaseBindAction {
 	 * 用户request_token_secret
 	 */
 	public static final String CURRENT_TOKEN_SECRET = "current_token_secret";
-	
+
 	/**
 	 * 认证成功后包含accesstoken和secrettoken的oauth
 	 */
 	public static final String CURRENT_OAUTH = "current_oauth";
-	
+
 	public static final String SENDREDIRECT_URL = "sendredirect_url";
 
 	/**
@@ -77,21 +78,27 @@ public class DefaultAuthBindAction extends BaseBindAction {
 	 */
 	private String bindType;
 
-	public String cblinkexecute() throws Exception {
-		// this.request.getParameterMap()
-		if (SysConst.TRUE.equals(isCallBack)) {
+	private OperatorResult returnResult;
+
+	public OperatorResult getReturnResult() {
+		return returnResult;
+	}
+
+	public void setReturnResult(OperatorResult returnResult) {
+		this.returnResult = returnResult;
+	}
+
+	public String execute() throws Exception {
+		if ("1".equals(isCallBack)) {
 			CallBack callback = callback();
-			OperatorResult<CallBack> result = new OperatorResult<CallBack>();
-			result.setDataList(callback);
-			result.setValue(SysConst.TRUE);
-			return returnContent(result);
+			returnResult.setDataList(callback);
+			returnResult.setValue("1");
 		} else {
 			CallBack callback = bind();
-			OperatorResult<CallBack> result = new OperatorResult<CallBack>();
-			result.setDataList(callback);
-			result.setValue(SysConst.TRUE);
-			return returnContent(result);
+			returnResult.setDataList(callback);
+			returnResult.setValue("1");
 		}
+		return "";
 	}
 
 	/**
@@ -141,14 +148,11 @@ public class DefaultAuthBindAction extends BaseBindAction {
 		String sendRedirectUrl = ObjectUtils.toString(session.getAttribute(SENDREDIRECT_URL));
 		oauth.setOauth_token(token_auth);
 		oauth.setOauth_token_secret(token_secret);
-		// oauth.setOauth_callback("http://localhost:8080/cblink/guest?method=guest.account.bind&callback="+SysConst.TRUE);
 		OAuthClient auth = new OAuthClient();
 		oauth.setOauth_verifier(this.oauth_verifier);
 		// auth.requestToken(oauth);
 		oauth = auth.accessToken(oauth);
 		logger.info("微博端返回数据：：");
-		//session.removeAttribute(CURRENT_TOKEN_AUTH);
-		//session.removeAttribute(CURRENT_TOKEN_SECRET);
 		session.setAttribute(CURRENT_OAUTH, oauth);
 		response.sendRedirect(sendRedirectUrl);
 		return null;

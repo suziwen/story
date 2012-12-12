@@ -6,6 +6,7 @@
 
     <http auto-config="true" lowercase-comparisons="false">
         <intercept-url pattern="/images/**" filters="none"/>
+        <intercept-url pattern="/bind/**" filters="none"/>
         <intercept-url pattern="/styles/**" filters="none"/>
         <intercept-url pattern="/scripts/**" filters="none"/>
         <intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
@@ -15,6 +16,12 @@
         <form-login login-page="/login" authentication-failure-url="/login?error=true" login-processing-url="/j_security_check"/>
         <remember-me user-service-ref="userDao" key="e37f4b31-0c45-11dd-bd0b-0800200c9a66"/>
     </http>
+    
+    <!--<beans:bean id="authenticationProcessingFilter" class="com.jrd.security.MyAuthenticationProcessingFilter">  
+        <custom-filter position="LOGOUT_FILTER" />  
+        <beans:property name="defaultTargetUrl" value="/logined.action" />  
+        <beans:property name="authenticationManager" ref="authenticationManager" />  
+    </beans:bean>-->  
 
     <authentication-manager>
         <authentication-provider user-service-ref="userDao">

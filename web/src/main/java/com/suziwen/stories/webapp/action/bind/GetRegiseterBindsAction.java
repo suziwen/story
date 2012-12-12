@@ -5,10 +5,7 @@ package com.suziwen.stories.webapp.action.bind;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.suziwen.persistent.model.UserAuth;
-import com.suziwen.stories.webapp.common.OperatorResult;
 
 /********************************************************
  * <p>
@@ -25,13 +22,11 @@ import com.suziwen.stories.webapp.common.OperatorResult;
  * @version 1.0
  ********************************************************/
 public class GetRegiseterBindsAction extends BaseBindAction {
-	
-	
+
 	public String cblinkexecute() throws Exception {
-		List<UserAuth > userAuths = (List<UserAuth>) session.getAttribute(DefaultBindAction.REGISTER_USERAUTHS);
-		OperatorResult<List<UserAuth>> result = new OperatorResult<List<UserAuth>>();
-		result.setDataList(userAuths);
-		return returnContent(result);
+		List<UserAuth> userAuths = (List<UserAuth>) request.getSession().getAttribute(DefaultBindAction.REGISTER_USERAUTHS);
+		returnResult.setDataList(userAuths);
+		return "";
 	}
 
 }

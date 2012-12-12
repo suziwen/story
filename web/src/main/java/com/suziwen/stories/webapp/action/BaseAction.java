@@ -1,6 +1,8 @@
 package com.suziwen.stories.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.suziwen.stories.webapp.common.OperatorResult;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.ServletActionContext;
@@ -42,6 +44,16 @@ public class BaseAction extends ActionSupport  implements ServletRequestAware, S
      * Constant for cancel result String
      */
     public static final String CANCEL = "cancel";
+    
+	protected OperatorResult returnResult;
+
+	public OperatorResult getReturnResult() {
+		return returnResult;
+	}
+
+	public void setReturnResult(OperatorResult returnResult) {
+		this.returnResult = returnResult;
+	}
 
     /**
      * Transient log to prevent session synchronization issues - children can use instance for logging.

@@ -87,7 +87,7 @@ public class BindAutoLoginAction extends BaseBindAction {
 		UserAuth sessionUserAuth = new UserAuth();
 		BeanUtils.copyProperties(currentUserAuth, sessionUserAuth);
 		session.setAttribute(DefaultBindAction.CURRENT_USERAUTH, sessionUserAuth);
-
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/j_spring_security_check?j_username=" + uid + "&j_password=" + upwd);
 		rd.forward(request, response);
 		// try{

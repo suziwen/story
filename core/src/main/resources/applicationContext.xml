@@ -14,4 +14,31 @@
     <!-- Add new DAOs here -->
 
     <!-- Add new Managers here -->
+    
+    	<bean id="qqWeiBoRequest" class="com.suziwen.weibo.base.QQWeiBoRequest">
+		<property name="consumerKey" value="${QQWeiBo.ConsumerKey}"></property>
+		<property name="consumerSecret" value="${QQWeiBo.ConsumerSecret}"></property>
+	</bean>
+	<bean id="sinaWeiBoRequest" class="com.suziwen.weibo.base.SinaWeiBoRequest">
+		<property name="consumerKey" value="${SinaWeiBo.ConsumerKey}"></property>
+		<property name="consumerSecret" value="${SinaWeiBo.ConsumerSecret}"></property>
+	</bean>
+	<bean id="sohuWeiBoRequest" class="com.suziwen.weibo.base.SohuWeiBoRequest">
+		<property name="consumerKey" value="${SohuWeiBo.ConsumerKey}"></property>
+		<property name="consumerSecret" value="${SohuWeiBo.ConsumerSecret}"></property>
+	</bean>
+	
+	<bean id="weiBoRequestManager" class="com.suziwen.weibo.base.DefaultWeiBoRequestManagerImpl">
+		<property name="weiBoRequests">
+			<list>
+				<ref bean="qqWeiBoRequest"/>
+				<ref bean="sinaWeiBoRequest"/>
+				<ref bean="sohuWeiBoRequest"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="weiBoOperator" class="com.suziwen.weibo.base.WeiBoOperatorImpl">
+		<property name="weiBoRequestManager" ref="weiBoRequestManager"></property>
+	</bean>
 </beans>

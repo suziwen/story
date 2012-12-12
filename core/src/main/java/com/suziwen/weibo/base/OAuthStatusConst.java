@@ -3,7 +3,6 @@
  */
 package com.suziwen.weibo.base;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 /**
  * ******************************************************
