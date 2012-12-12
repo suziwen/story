@@ -8,4 +8,4 @@ web/target/
 .project
 .settings/
 core/target/
-
+target/
