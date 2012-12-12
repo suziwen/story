@@ -78,15 +78,7 @@ public class DefaultAuthBindAction extends BaseBindAction {
 	 */
 	private String bindType;
 
-	private OperatorResult returnResult;
 
-	public OperatorResult getReturnResult() {
-		return returnResult;
-	}
-
-	public void setReturnResult(OperatorResult returnResult) {
-		this.returnResult = returnResult;
-	}
 
 	public String execute() throws Exception {
 		if ("1".equals(isCallBack)) {
@@ -98,7 +90,7 @@ public class DefaultAuthBindAction extends BaseBindAction {
 			returnResult.setDataList(callback);
 			returnResult.setValue("1");
 		}
-		return "";
+		return "success";
 	}
 
 	/**

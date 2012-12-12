@@ -26,7 +26,7 @@ public class GetRegiseterBindsAction extends BaseBindAction {
 	public String cblinkexecute() throws Exception {
 		List<UserAuth> userAuths = (List<UserAuth>) request.getSession().getAttribute(DefaultBindAction.REGISTER_USERAUTHS);
 		returnResult.setDataList(userAuths);
-		return "";
+		return "success";
 	}
 
 }

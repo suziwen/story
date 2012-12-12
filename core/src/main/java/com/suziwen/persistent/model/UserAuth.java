@@ -19,7 +19,7 @@ public class UserAuth implements java.io.Serializable {
 	// Fields
 	@Id
    @GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 	@Column(nullable = false)
 	private String userId;
 	private String siteId;
@@ -37,12 +37,12 @@ public class UserAuth implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public UserAuth(String id) {
+	public UserAuth(Long id) {
 		this.id = id;
 	}
 
 	/** full constructor */
-	public UserAuth(String id, String userId, String siteId,
+	public UserAuth(Long id, String userId, String siteId,
 			String bindLoginName, String binPwd, Date bindDate, String bindUid,
 			String bindAccessToken, String bindAccessSecret) {
 		this.id = id;
@@ -58,11 +58,11 @@ public class UserAuth implements java.io.Serializable {
 
 	// Property accessors
 
-	public String getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

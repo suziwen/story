@@ -45,7 +45,7 @@ public class BaseAction extends ActionSupport  implements ServletRequestAware, S
      */
     public static final String CANCEL = "cancel";
     
-	protected OperatorResult returnResult;
+	protected OperatorResult returnResult = new OperatorResult();
 
 	public OperatorResult getReturnResult() {
 		return returnResult;

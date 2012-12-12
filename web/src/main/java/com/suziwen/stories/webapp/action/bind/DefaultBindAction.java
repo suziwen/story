@@ -88,7 +88,7 @@ public class DefaultBindAction extends BaseBindAction {
 		CallBack callback = bindSuccess();
 		returnResult.setDataList(callback);
 		returnResult.setValue("1");
-		return "";
+		return "success";
 	}
 
 	public CallBack bindSuccess() throws Exception {

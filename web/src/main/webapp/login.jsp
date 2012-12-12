@@ -5,6 +5,7 @@
     <meta name="heading" content="<fmt:message key='login.heading'/>"/>
     <meta name="menu" content="Login"/>
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/styles/${appConfig["csstheme"]}/layout-1col.css'/>" />
+    <script type="text/javascript" src="<c:url value='/scripts/bind.js'/>"></script>
 </head>
 <body id="login">
 
@@ -47,6 +48,11 @@
             </fmt:message>
         </p>
     </li>
+</ul>
+<ul>
+	<li><a href="javascript:void(0);" id="sinabtn">sina</a></li>
+	<li><a href="javascript:void(0);" id="qqblogbtn">qq</a></li>
+	<li><a href="javascript:void(0);" id="qqbtn">sohu</a></li>
 </ul>
 </fieldset>
 </form>
