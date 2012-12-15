@@ -90,6 +90,10 @@
                 <directory>src/test/resources</directory>
                 <filtering>true</filtering>
             </testResource>
+	        <testResource>
+				<directory>src/test/groovy</directory>
+				<filtering>true</filtering>
+		    </testResource>
         </testResources>
     </build>
 

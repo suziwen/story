@@ -69,6 +69,77 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+				<plugin>
+					    <groupId>org.codehaus.gmaven</groupId>
+					    <artifactId>gmaven-plugin</artifactId>
+					    <version>1.2</version>
+					    <configuration>
+					        <providerSelection>1.7</providerSelection>
+					        <sourceEncoding>UTF-8</sourceEncoding>
+					        <!-- 用maven编译时需要加encoding：mvn -Dfile.encoding=UTF-8 compile  -->
+					        <source/>
+					    </configuration>
+					    <dependencies>
+					        <dependency>
+					            <groupId>org.codehaus.gmaven.runtime</groupId>
+					            <artifactId>gmaven-runtime-1.7</artifactId>
+					            <version>1.2</version>
+					            <exclusions>
+					                <exclusion>
+					                    <groupId>org.codehaus.groovy</groupId>
+					                    <artifactId>groovy-all</artifactId>
+					                </exclusion>
+					            </exclusions>
+					        </dependency>
+					        <dependency>
+					            <groupId>org.codehaus.groovy</groupId>
+					            <artifactId>groovy-all</artifactId>
+					            <version>1.7.9</version>
+					        </dependency>
+					    </dependencies>
+					    <executions>
+					        <execution>
+					            <goals>
+					                <goal>generateStubs</goal>
+					                <goal>compile</goal>
+					                <goal>generateTestStubs</goal>
+					                <goal>testCompile</goal>
+					            </goals>
+					        </execution>
+					    </executions>
+					 </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-eclipse-plugin</artifactId>
+	                <version>2.9</version>
+	                <configuration>  
+	                    <sourceExcludes>  
+	                        <sourceExclude>**/.svn/</sourceExclude>  
+	                    </sourceExcludes> 
+			    <sourceIncludes>
+				<sourceInclude>**/*.groovy</sourceInclude>
+				<sourceInclude>**/*.xml</sourceInclude>
+				<sourceInclude>**/*.properties</sourceInclude>
+			   </sourceIncludes>
+	                    <downloadSources>true</downloadSources>
+			    <downloadJavadocs>true</downloadJavadocs>  
+	                    <ajdtVersion>none</ajdtVersion>
+			    <additionalProjectnatures>
+				   <projectnature>org.eclipse.jdt.groovy.core.groovyNature</projectnature>
+			    </additionalProjectnatures>  
+				 <additionalConfig>
+				   <file>
+				     <name>.settings/org.eclipse.jdt.groovy.core.prefs</name>
+				     <content>
+				     <![CDATA[
+	eclipse.preferences.version=1
+	groovy.compiler.level=20
+	groovy.script.filters=**/*.dsld,y,scripts/**/*.groovy,y,src/main/groovy/**/*.groovy,y,src/test/groovy/**/*.groovy,y]]>
+					</content>
+				   </file>
+				  </additionalConfig>
+	                </configuration>
+	            </plugin>
         </plugins>
     </build>
 
@@ -83,6 +154,10 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+			    <id>groovy</id>
+			    <url>http://repository.codehaus.org/org/codehaus/groovy/</url>
+		  </repository>
     </repositories>
 
     <pluginRepositories>
@@ -99,6 +174,11 @@
     </pluginRepositories>
 
     <dependencies>
+	    	<dependency>
+			    <groupId>org.codehaus.groovy</groupId>
+			    <artifactId>groovy</artifactId>
+			    <version>1.7.9</version>
+		  </dependency>
         <dependency>
             <groupId>${jdbc.groupId}</groupId>
             <artifactId>${jdbc.artifactId}</artifactId>
